@@ -1,0 +1,638 @@
+/* ページ全体(レイアウト)に係る記述 */
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.wrap{
+  display: flex;
+  overflow: hidden;
+}
+a{
+  color: black;
+  text-decoration: none;
+}
+
+h2{
+  font-size: 40px;
+  font-family: 'Kosugi Maru', sans-serif;
+}
+h3{
+  font-size: 30px;
+  font-family: 'Kosugi Maru', sans-serif;
+}
+ul{
+  list-style: none;
+}
+.footer-logo >p{
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+
+/* ページ全体(アニメーション)に係る記述 */
+.fadein{
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.5s;
+}
+.fadein-left{
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: 0.5s;
+}
+.fadein-right{
+  opacity: 0;
+  transform: translateX(20px);
+  transition: 0.5s;
+}
+
+.start{
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9000;
+}
+.start p {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	z-index: 9999;
+}
+.start >p >img{
+  width: 120px;
+}
+
+
+/* サイドバーとメインを分ける記述 */
+.side{
+  width: 220px;
+  min-width: 220px;
+  padding: 50px 0 0 20px;
+}
+.main{
+  border-left: solid gray thin;
+  width: 100%;
+}
+
+
+/* サイドバー(ロゴ含)＆ナビの全体的な記述 */
+.nav{
+  padding: 10px 10px
+}
+.nav >ul >li{
+  padding: 5px 0px;
+}
+
+
+/*【PC版】サイドバー(ロゴ含)＆ナビの記述 */
+@media screen and (min-width: 960px) {
+  .logo{
+    margin-bottom: 10px;
+  }
+  .logo h1{
+    display: inline;
+    border-bottom: solid;
+  }
+  .logo >h1 >a{
+    font-family: 'Kosugi Maru', sans-serif;
+    font-size: 50px;
+  }
+  .share-sns-sp{
+    display: none;
+  }
+}
+
+
+/*【スマホ版】サイドバー(ロゴ含)＆ナビの記述 */
+@media screen and (max-width: 959px) {
+  .side{
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    text-align: center;
+    z-index: 20;
+    transform: translateY(0vw);
+  }
+  .logo{
+    position: relative;
+    padding: 30px 10px
+  }
+  .logo >h1{
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -5%;
+  }
+  .logo >h1 >a{
+    color: black;
+    font-size: 60px;
+    font-family: 'Kosugi Maru', sans-serif;
+    text-decoration: none;
+  }
+  .side-other{
+    margin-top: 50px;
+  }
+  .is-active{
+    display: none;
+  }
+
+  .share-sns-sp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 20px 0;
+  }
+  .sns-icon >li >img{
+    margin: 5px;
+    width: 40px;
+  }
+
+  .copy-rights{
+    margin-bottom: 30px;
+  }
+}
+
+
+/* ハンバーガーメニューのアニメーションに関する記述 */
+@media screen and (max-width: 959px) {
+  .menu-trigger, .menu-trigger span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+  }
+  .menu-trigger {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 20px 20px 0 auto;
+  }
+  .menu-trigger >span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    border-radius: 4px;
+  }
+  .menu-trigger >span:nth-of-type(1) {
+    top: 0;
+  }
+  .menu-trigger >span:nth-of-type(2) {
+    top: 10px;
+  }
+  .menu-trigger >span:nth-of-type(3) {
+    top: 20px;
+  }
+  .menu-trigger.active span:nth-of-type(1) {
+    -webkit-transform: translateY(10px) rotate(-45deg);
+    transform: translateY(10px) rotate(-45deg);
+  }
+  .menu-trigger.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+  .menu-trigger.active span:nth-of-type(3) {
+    -webkit-transform: translateY(-10px) rotate(45deg);
+    transform: translateY(-10px) rotate(45deg);
+  }
+}
+
+
+/* ヘッダーに関する記述*/
+.header{
+  position: relative;
+  margin: 10px 0 10px 0;
+}
+
+.sns{
+  display: flex;
+  justify-content: flex-end;
+  width: 30%;
+  margin: 0 50px 0 auto;
+}
+.sns >li{
+  margin: 5px;
+}
+
+@media screen and (max-width: 959px) {
+  .sns{ /* スマホ版ではヘッダー内のSNSアイコンを消す */
+    display: none;
+  }
+}
+
+
+/* アイキャッチに関する記述 */
+.eye-catch{
+  background-image: url("img/eye-catch.jpg");
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+  z-index: 10;
+}
+
+
+/* ギャラリーに関する記述 */
+.gallery-inner{
+  padding: 50px 0 30px 0;
+}
+.photos{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap:wrap;
+}
+
+.view-instagram >a{
+  display: block;
+  text-align: right;
+  margin: 0 20px 0 auto;
+  color: gray;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 960px) {
+  .a-photo{
+    margin: 10px 5px 20px 5px;
+    width: 130px;
+  }
+  .a-photo >img{
+   width: 100%;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .a-photo{
+    margin: 10px 3px 20px 3px;
+    width: 30%;
+  }
+  .a-photo >img{
+   width: 100%;
+  }
+}
+
+
+/* 「想い(belief)」に関する記述 */
+.belief{
+  background-color: #FCFBE4;
+}
+.belief-photo >img{
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.25);
+}
+.belief-messages >p{
+  line-height: 2em;
+}
+
+@media screen and (min-width: 960px) {
+  .belief-inner{
+    display: flex;
+    padding: 100px 0;
+  }
+  .belief-photo{
+    margin: 0 20px;
+    width: 60%;
+  }
+  .belief-messages{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  .belief-title{
+    padding: 0 0 30px 0;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .belief-inner{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 100px 0;
+  }
+  .belief-photo{
+    padding-top: 30px;
+    width: 90%;
+    margin: auto;
+  }
+  .belief-photo >img{
+    width: 100%;
+  }
+  .belief-messages{
+    text-align: center;
+  }
+  .belief-title{
+    padding: 50px 0 30px 0;
+  }
+}
+
+
+/* サービスに関する全体的な記述 */
+.service-inner{
+  width: 95%;
+  padding: 50px 20px 50px 20px;
+}
+.service-title{
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+.calender-msg >p, .canvas-msg >p, .gift-msg >p{
+  line-height: 2em;
+}
+.calender-img >img{
+  border-radius: 10px;
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.25);
+}
+
+
+/* MOREボタンに関する記述 */
+.btn-wrapper{
+  text-align: center;
+}
+.m-btn{
+  text-decoration: none;
+  color: #545454;
+  display: inline-block;
+  padding: 1em 2em;
+  border: 1px solid #545454;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+  cursor: pointer;
+}
+@media screen and (min-width: 960px) {
+  .m-btn:after {
+    position: absolute;
+    transition: 0.4s;
+    content: "";
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 2px;
+    background: #545454;
+  }
+  .m-btn:hover {
+    box-shadow: 0px 0px 0px 3px #545454;
+  }
+}
+
+
+/*【PC版】サービス(カレンダー)に関する記述 */
+@media screen and (min-width: 960px) {
+  .calender{
+    margin: 20px 0 100px 0;
+  }
+  .calender-img{
+    text-align: center;
+  }
+  .calender-img >img{
+    height: 500px;
+  }
+  .calender-msg{
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+  }
+  .calender-msg >h3{
+    margin-right: 20px;
+  }
+}
+
+
+/*【PC版】サービス(その他)に関する記述 */
+@media screen and (min-width: 960px) {
+  .other-service{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+  }
+  .canvas, .gift{
+    width: 45%;
+    margin: 0 10px 0 10px;
+  }
+  .canvas-img >img, .gift-img >img{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 7px rgba(0,0,0,0.25);
+  }
+  .canvas-msg, .gift-msg{
+    text-align: center;
+    margin: 40px 0 40px 0;
+  }
+  .canvas-msg >h3, .gift-msg >h3{
+    margin-bottom: 20px;
+  }
+}
+
+
+/*【スマホ版】サービス(全３種類)に関する記述 */
+@media screen and (max-width: 959px) {
+  .service-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .calender, .canvas, .gift{
+    margin: 20px 0 100px 0;
+  }
+  .calender-img, .canvas-img, .gift-img{
+    text-align: center;
+  }
+  .calender-img >img, .canvas-img >img, .gift-img >img{
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 7px rgba(0,0,0,0.25);
+  }
+  .calender-msg, .canvas-msg, .gift-msg{
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .calender-msg >h3, .canvas-msg >h3, .gift-msg >h3{
+    margin-bottom: 20px;
+  }
+}
+
+
+/* フッターの全体にかかる記述 */
+.footer{
+  background-color: #DCD0C1;
+  position: relative;
+  width: 100%;
+}
+.footer-inner{
+  display: flex;
+  width: 100%;
+  padding: 50px 0;
+}
+
+@media screen and (min-width: 960px) {
+  .top-scroll{
+    display: none;
+  }
+  .footer-inner{
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .footer-inner{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* フッター(ロゴ部分)にかかる記述 */
+@media screen and (min-width: 960px) {
+  .footer-logo >p{
+    padding: 0 50px 0 20px;
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .footer-logo >p{
+    text-align: center;
+    padding: 0 0 10px 0;
+  }
+}
+
+
+/* フッター(メイン部分)にかかる記述 */
+@media screen and (min-width: 960px) {
+  .footer-main-link{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer-main-link >ul{
+    border-left: solid thin ;
+    padding: 0 40px 0 20px ;
+  }
+  .footer-main-link >ul >li{
+    padding-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .footer-main-link{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+    border-top: solid thin;
+    border-bottom: solid thin;
+  }
+  .link-left, .link-right{
+    padding: 0 40px 0 20px ;
+  }
+  .link-right{
+    border-left: solid thin;
+  }
+  .link-left >li, .link-right >li{
+    padding-bottom: 10px;
+    font-size: 13px;
+  }
+}
+
+
+/* フッター(サブ部分)にかかる記述 */
+.download-title > img{
+  width: 150px;
+}
+.download-icon{
+  display: flex;
+  flex-wrap: wrap;
+}
+.dl-wrapper{
+ margin: 5px;
+}
+.cal-icon{
+  width: 40px;
+}
+.app-icon{
+  width: 130px;
+}
+.sns-title{
+  margin-right: 10px;
+}
+.share-sns{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.sns-icon >li{
+  margin: 5px;
+}
+
+@media screen and (min-width: 960px) {
+  .share-sns{
+    flex-direction: row;
+  }
+  .sns-title{
+    padding-top: 5px;
+  }
+  .sns-icon{
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .footer-sub-link{
+    padding: 20px 0;
+    text-align: center;
+  }
+  .share-sns{
+    flex-direction: column;
+  }
+  .sns-icon{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* トップに戻るアニメーションに関する記述 */
+@media screen and (max-width: 959px) {
+  .top-scroll{
+    cursor: pointer;
+    position: absolute;
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    color: white;
+    text-align: center;
+    font-size: 13px;
+  }
+  .arrow-wrapper{
+    width: 10px;
+    margin: auto;
+  }
+  .arrow{
+    width: 10px;
+    height: 10px;
+    border-top: solid white;
+    border-right: solid white;
+    transform: rotate(-45deg);
+    margin-top: 10px;
+  }
+}
