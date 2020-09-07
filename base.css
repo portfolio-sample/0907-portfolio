@@ -17,7 +17,7 @@ a{
 }
 
 h2{
-  font-size: 35px;
+  font-size: 30px;
   font-family: 'Kosugi Maru', sans-serif;
 }
 h3{
@@ -60,16 +60,14 @@ ul{
   width: 100%;
   z-index: 9000;
 }
-.start p {
+.start >h2 {
 	position: absolute;
+  font-size: 60px;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	display: none;
 	z-index: 9999;
-}
-.start >p >img{
-  width: 120px;
 }
 
 
